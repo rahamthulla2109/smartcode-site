@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects • SmartCode Tech Hub</title>
+
+<link rel="stylesheet" href="assets/css/style.css" />
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+
+<style>
+/* SAME HOVER & EFFECTS AS INDEX */
+.nav a,
+button,
+.btn-primary,
+.btn-outline {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: #fff;
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav a:hover,
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35),
+              0 0 12px #22d3ee;
+}
+
+/* HERO */
+.hero-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  border-radius: 20px;
+  margin: 2rem;
+  color: #fff;
+}
+
+/* CARDS */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35),
+              0 0 15px #6366f1;
+}
+</style>
+</head>
+
+<body class="theme-dark">
+
+<!-- ================= HEADER (SAME AS INDEX) ================= -->
+<header class="header">
+  <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;">
+
+    <a href="index.html" class="brand" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/img/Logo.svg.png" alt="SmartCode" style="height:45px;">
+      <strong style="font-size:1.2rem;">SmartCode Tech Hub</strong>
+    </a>
+
+    <nav class="nav" id="navMenu" style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="index.html" class="btn-outline"><i data-lucide="home"></i>Home</a>
+      <a href="courses.html" class="btn-outline"><i data-lucide="book-open"></i>Courses</a>
+      <a href="projects.html" class="btn-primary"><i data-lucide="code"></i>Projects</a>
+      <a href="internships.html" class="btn-outline"><i data-lucide="briefcase"></i>Internships</a>
+      <a href="workshops.html" class="btn-outline"><i data-lucide="tool"></i>Workshops</a>
+      <a href="about.html" class="btn-outline"><i data-lucide="info"></i>About</a>
+      <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <h1>Industry-Ready Projects 💻</h1>
+    <p>
+      Build real-world applications in Full-Stack, AI, Cloud,
+      DevOps & Cybersecurity with mentor support.
+    </p>
+
+    <a href="courses.html" class="btn-primary">
+      <i data-lucide="book-open"></i> Learn & Build
+    </a>
+    <a href="contact.html" class="btn-outline">
+      <i data-lucide="mail"></i> Start a Project
+    </a>
+  </div>
+
+  <img src="assets/img/baner.svg.png" alt="Projects" style="max-width:420px;">
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section class="section">
+  <div class="container">
+
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">Hands-on projects aligned with industry standards</p>
+
+    <div class="courses-grid">
+
+      <div class="card">
+        <h3>📋 Task Manager App</h3>
+        <p>Role-based productivity app with analytics dashboard.</p>
+      </div>
+
+      <div class="card">
+        <h3>🤖 AI Churn Predictor</h3>
+        <p>Machine learning model predicting customer churn.</p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 DevOps CI/CD Pipeline</h3>
+        <p>Automated build & deployment using Docker & Kubernetes.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛒 E-Commerce Platform</h3>
+        <p>Online store with admin panel & secure payments.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔐 Vulnerability Scanner</h3>
+        <p>Cybersecurity scanner for OWASP vulnerabilities.</p>
+      </div>
+
+      <div class="card">
+        <h3>📊 Data Analytics Dashboard</h3>
+        <p>Business KPIs & visualization dashboard.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2025 SmartCode Tech Hub — All Rights Reserved</p>
+</footer>
+
+<script>
+  lucide.replace();
+</script>
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

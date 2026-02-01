@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartCode Tech Hub • Learn Future Tech</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+<style>
+:root {
+  --accent1: #6366f1;
+  --accent2: #22d3ee;
+  --card-base: #111;
+}
+
+/* ===== GLOBAL ===== */
+body.theme-dark { background:#0f0f15; color:#fff; font-family:sans-serif; margin:0; padding:0; scroll-behavior:smooth; }
+a { text-decoration:none; }
+img { max-width:100%; border-radius:12px; }
+
+/* ===== HEADER ===== */
+.header {
+  position: sticky;
+  top:0;
+  z-index:1000;
+  padding:1rem 5%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter: blur(12px);
+  transition: background 0.3s, padding 0.3s;
+}
+.header.scrolled { background: rgba(0,0,0,0.85); padding:0.5rem 5%; }
+.nav a { display:inline-flex; align-items:center; gap:6px; padding:10px 18px; border-radius:12px; font-weight:600; transition:all 0.3s ease; }
+.nav a:hover { transform:scale(1.05); box-shadow:0 12px 25px rgba(0,0,0,0.35),0 0 12px #22d3ee; }
+
+/* ===== HERO ===== */
+.hero-banner {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:4rem 5%;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  border-radius: 20px; color:#fff; margin:2rem 0;
+  opacity:0; transform: translateY(20px); transition: all 1s ease-out;
+}
+.hero-banner.visible { opacity:1; transform:translateY(0); }
+.hero-content h1 { font-size:3rem; margin-bottom:1rem; }
+.hero-content p { font-size:1.2rem; opacity:0.9; margin-bottom:1.5rem; }
+.hero-content a { margin-right:12px; }
+.btn-primary { background: linear-gradient(135deg, #6366f1, #22d3ee); color:#fff; border:none; padding:0.75rem 1.5rem; border-radius:12px; cursor:pointer; transition:0.3s; }
+.btn-outline { background: rgba(255,255,255,0.1); color: #fff; border:1px solid rgba(255,255,255,0.25); padding:0.75rem 1.5rem; border-radius:12px; cursor:pointer; transition:0.3s; }
+.btn-primary:hover { background: linear-gradient(135deg, #22d3ee, #6366f1); transform: scale(1.05); }
+.btn-outline:hover { transform: scale(1.05); }
+
+/* ===== CARDS & GRIDS ===== */
+.courses-grid, .projects-grid, .tech-grid, .mentors-grid, .faq-grid, .blog-carousel {
+  display: grid; gap:1.5rem; padding:2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.card, .course-card {
+  background: color-mix(in srgb, var(--card-base) 70%, transparent);
+  backdrop-filter: blur(14px); border-radius:18px; padding:16px;
+  position:relative; overflow:hidden; border:1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35),0 4px 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover, .course-card:hover { transform: translateY(-12px); box-shadow:0 30px 70px rgba(0,0,0,0.55),0 12px 30px rgba(0,0,0,0.35);}
+.course-thumb { border-radius:14px; box-shadow:0 10px 25px rgba(0,0,0,0.4); transition: transform 0.35s ease;}
+.course-card:hover .course-thumb { transform: scale(1.05); }
+.card::before, .course-card::before {
+  content:""; position:absolute; inset:0; border-radius:18px;
+  background:linear-gradient(135deg, transparent, #22d3ee55, transparent);
+  opacity:0; transition:0.4s;
+}
+.card:hover::before, .course-card:hover::before { opacity:1; }
+
+/* ===== SECTION TITLES ===== */
+.section-title { font-size:2rem; text-align:center; margin-bottom:0.5rem; }
+.section-subtitle { text-align:center; color:#94a3b8; margin-bottom:2rem; }
+
+/* ===== TECH GRID ===== */
+.tech-grid { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
+.tech-card { background: rgba(255,255,255,0.08); padding:16px; border-radius:12px; font-weight:600; display:flex; align-items:center; gap:8px; transition: transform 0.3s; }
+.tech-card:hover { transform: translateY(-5px) scale(1.05); }
+
+/* ===== MENTORS GRID ===== */
+.mentors-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1.5rem; }
+
+/* ===== FAQ ===== */
+.faq-item h3 { cursor:pointer; padding:12px; background:rgba(255,255,255,0.05); border-radius:10px; margin:0; }
+.faq-item p { max-height:0; overflow:hidden; transition:max-height 0.3s ease; margin:0.5rem 0 0; }
+.faq-item.active p { max-height:200px; padding:0.5rem 0; }
+
+/* ===== BLOG CAROUSEL ===== */
+.blog-carousel { display:flex; overflow-x:auto; gap:1rem; scroll-snap-type: x mandatory; padding-bottom:1rem;}
+.blog-carousel .course-card { flex:0 0 300px; scroll-snap-align:start; }
+
+/* ===== CTA ===== */
+.section-alt { background: linear-gradient(135deg, var(--accent1), var(--accent2)); color:#fff; text-align:center; padding:4rem 2%; border-radius:20px; margin:2rem 0; }
+.section-alt a { margin:0.5rem; }
+
+/* ===== FOOTER ===== */
+.footer { text-align:center; padding:2rem 0; opacity:0.9; }
+.footer .container { display:flex; flex-wrap:wrap; justify-content:space-between; gap:2rem; align-items:flex-start; }
+.footer form input { padding:10px; border-radius:8px; border:none; margin-right:6px; }
+
+/* ===== SOCIAL ICONS ===== */
+/* SOCIAL ICONS */
+.social-links a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15); /* visible circle */
+  transition: 0.3s;
+}
+
+.social-links a svg {
+  stroke: #fff;       /* makes icon visible on dark background */
+  width: 22px;
+  height: 22px;
+}
+
+.social-links a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 18px #22d3ee;
+}
+.brand-name.multicolor {
+  font-size: 2.0rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+
+  /* Multi-color gradient to match logo */
+  background: linear-gradient(
+    90deg,
+    #ff3cac,   /* pink */
+    #784ba0,   /* purple */
+    #22d3ee,   /* cyan */
+    #fcdc00    /* yellow */
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Optional subtle animation */
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+
+/* ===== ANIMATIONS ===== */
+section { opacity:0; transform:translateY(40px); transition:all 0.7s ease-out; }
+section.visible { opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body class="theme-dark">
+
+<!-- HEADER -->
+<header class="header">
+<a href="index.html" class="brand" style="display:flex;align-items:center;gap:18px;">
+  <img 
+    src="assets/img/Logo.svg.png" 
+    alt="SmartCode Logo"
+    style="height:100px;width:auto;"
+  >
+  <strong class="brand-name multicolor">SmartCode Tech Hub</strong>
+</a>
+
+  </strong>
+</a>
+
+</a>
+
+  <nav class="nav">
+    <a href="index.html" class="btn-outline"><i data-lucide="home"></i>Home</a>
+    <a href="courses.html" class="btn-outline"><i data-lucide="book-open"></i>Courses</a>
+    <a href="software.html" class="btn-outline"><i data-lucide="code"></i>Software</a>
+    <a href="projects.html" class="btn-outline"><i data-lucide="code"></i>Projects</a>
+    <a href="workshops.html" class="btn-outline"><i data-lucide="tool"></i>Workshops</a>
+    <a href="internships.html" class="btn-outline"><i data-lucide="graduation-cap"></i>Internships</a>
+    <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <h1>Build Your Career in Tech & Trading </h1>
+    <p>Learn programming, AI, cloud, cybersecurity, trading & full-stack development with real projects and expert mentors.</p>
+    <a href="courses.html" class="btn-primary"><i data-lucide="book-open"></i>Explore Courses</a>
+    <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Get Guidance</a>
+  </div>
+  <img src="assets/img/entry image .jpg.png" alt="Tech Learning" style="max-width:420px;">
+</section>
+
+<!-- WHY SMARTCODE -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Why SmartCode Tech Hub</h2>
+    <p class="section-subtitle">Everything you need to succeed in software careers</p>
+    <div class="courses-grid">
+      <div class="card"><h3>🎓 50+ Courses</h3><p>Programming, AI, Cloud, DevOps, Cybersecurity & more.</p></div>
+      <div class="card"><h3>🛠 Real Projects</h3><p>Hands-on projects that match real industry work.</p></div>
+      <div class="card"><h3>💼 Internships</h3><p>Gain experience with guided internships.</p></div>
+      <div class="card"><h3>🚀 Placement Focus</h3><p>Career guidance, resume help & interview prep.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNSHIPS -->
+<!-- INTERNSHIPS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Internship Programs</h2>
+    <p class="section-subtitle">Industry-oriented internships with real experience</p>
+
+    <div class="courses-grid">
+
+      <!-- Software Development (button BELOW image) -->
+       
+     <div class="card internship-card"
+  data-title="Software Development Internship"
+  data-image="assets/courses/sd.jpg"
+  data-desc="Work on real full-stack and backend projects with expert mentorship."
+  data-tech="HTML, CSS, JavaScript, Java, Python">
+
+  <img src="assets/courses/sd.jpg" class="course-thumb">
+  <h3>💻 Software Development</h3>
+  <p>Work on live full-stack & backend projects guided by mentors.</p>
+  <a href="internships.html" class="btn-outline">View Internship</a>
+</div>
+
+      <!-- Cloud & DevOps (button BESIDE image) -->
+      <div class="card internship-card devops-card">
+        <div class="devops-layout">
+          <img src="assets/courses/deops.jpg" class="course-thumb">
+          <div>
+            <h3>☁ Cloud & DevOps</h3>
+            <p>AWS, CI/CD, Docker & real deployment workflows.</p>
+            <a href="internships.html" class="btn-outline">View Internship</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data & AI (button BELOW image) -->
+      <div class="card internship-card">
+        <img src="assets/courses/datascience.jpg" class="course-thumb">
+        <h3>📊 Data & AI</h3>
+        <p>Machine learning, analytics & AI-powered solutions.</p>
+        <a href="internships.html" class="btn-outline">View Internship</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR COURSES -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Popular Courses</h2>
+    <p class="section-subtitle">Most in-demand skills in 2025</p>
+    <div class="courses-grid">
+      <div class="course-card"><img src="assets/courses/python_jpg.webp" class="course-thumb"><h3>Python Full Stack</h3><p> Learn Python, Django, Flask & build real-world apps,Python, Django, Flask, SQL"</p></div>
+      <div class="course-card" ><img src="assets/courses/reactjs .jpg" class="course-thumb"><h3>React.js</h3><p>Learn React.js, Redux & create dynamic web applications."React.js, Redux, JavaScript, HTML, CSS</p></div>
+      <div class="course-card"> <img src="assets/courses/cloud.jpg" class="course-thumb"><h3>Cloud Computing</h3><p>Master AWS, Azure, GCP and cloud deployment pipelines."AWS, Azure, GCP, DevOps</p></div>
+      <div class="course-card"> <img src="assets/courses/cyber.jpg" class="course-thumb"><h3>CyberSecurity</h3><p>Learn to secure systems, networks & applications against attacks.Ethical Hacking, Network Security, Penetration Testing</p></div>
+      <div class="course-card" ><img src="assets/courses/java.jpg" class="course-thumb"><h3>Java</h3><p>Learn Java, Spring Boot, Hibernate, and build real-world projects.Java, Spring Boot, Hibernate, SQL</p></div>
+      <div class="course-card"><img src="assets/courses/ai prompt.jpg" class="course-thumb"><h3>AI</h3> <p>Learn AI, machine learning algorithms & build smart applications. Python, TensorFlow, Machine Learning, AI</p></div>
+      <div class="course-card"> <img src="assets/courses/ds.jpg" class="course-thumb"><h3>Data Science</h3><p>Learn data analytics, visualization, and predictive modeling.Python, Pandas, NumPy, Matplotlib, Machine Learning"</p></div>
+      <div class="course-card"><img src="assets/courses/csharp.jpg" class="course-thumb"><h3>C#</h3><p>C# Development,Learn C# and .NET framework to build desktop and web apps,C#, .NET, SQL, Windows Forms</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- MENTORS SECTION -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Meet Our Mentors</h2>
+    <p class="section-subtitle">Industry experts guiding your journey</p>
+    <div class="mentors-grid">
+      <div class="card"><img src="assets/img/mentor1.jpg" class="course-thumb"><h3>John Doe</h3><span>AI Specialist</span></div>
+      <div class="card"><img src="assets/img/mentor2.jpg" class="course-thumb"><h3>Priya Sharma</h3><span>Full Stack Developer</span></div>
+      <div class="card"><img src="assets/img/mentor3.jpg" class="course-thumb"><h3>Rahul Mehta</h3><span>Algo Trader</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- STATISTICS / COUNTERS SECTION WITH ICONS -->
+<section class="section section-alt">
+  <div class="container" style="display:flex;flex-wrap:wrap;justify-content:center;gap:3rem;text-align:center;">
+
+    <div style="flex:1 1 200px;">
+      <i data-lucide="users" style="width:48px;height:48px;margin-bottom:0.5rem;"></i>
+      <h2 class="counter" data-target="5000">0</h2>
+      <p>Students Enrolled</p>
+    </div>
+
+    <div style="flex:1 1 200px;">
+      <i data-lucide="book-open" style="width:48px;height:48px;margin-bottom:0.5rem;"></i>
+      <h2 class="counter" data-target="50">0</h2>
+      <p>Courses Available</p>
+    </div>
+
+    <div style="flex:1 1 200px;">
+      <i data-lucide="cpu" style="width:48px;height:48px;margin-bottom:0.5rem;"></i>
+      <h2 class="counter" data-target="100">0</h2>
+      <p>Projects Completed</p>
+    </div>
+
+    <div style="flex:1 1 200px;">
+      <i data-lucide="award" style="width:48px;height:48px;margin-bottom:0.5rem;"></i>
+      <h2 class="counter" data-target="150">0</h2>
+      <p>Placements Achieved</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Replace icons using lucide.js
+  lucide.replace();
+
+  // COUNTER ANIMATION
+  const counters = document.querySelectorAll('.counter');
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const speed = 50; // higher = slower
+      const increment = target / speed;
+
+      if(count < target){
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+
+    // Animate only when scrolled into view
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          updateCount();
+          observer.unobserve(entry.target); // run only once
+        }
+      });
+    }, {threshold:0.5});
+
+    observer.observe(counter);
+  });
+});
+</script>
+
+<!-- PROJECTS / TRADING DASHBOARD -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Projects & Trading Dashboard</h2>
+    <p class="section-subtitle">Explore our live projects, AI bots, and trading solutions</p>
+    <div class="projects-grid">
+      <!-- Project Card -->
+      <div class="card project-card" data-modal="modal1">
+        <img src="assets/courses/algo.jpg" class="course-thumb" alt="Algo Trading Bot">
+        <h3>Algo Trading Bot</h3>
+        <p>AI-powered bots executing trades automatically based on market signals.</p>
+        <span class="project-tech">Python • AI • API Integration</span>
+      </div>
+
+      <div class="card project-card" data-modal="modal2">
+        <img src="assets/courses/analytics.jpg" class="course-thumb" alt="Market Dashboard">
+        <h3>Market Analysis Dashboard</h3>
+        <p>Interactive dashboards with live stock & crypto analytics.</p>
+        <span class="project-tech">React • D3.js • WebSocket</span>
+      </div>
+
+      <div class="card project-card" data-modal="modal3">
+        <img src="assets/courses/tc.jpg" class="course-thumb" alt="Trading Strategies">
+        <h3>Trading Strategies Course</h3>
+        <p>Learn algorithmic trading strategies, risk management & portfolio optimization.</p>
+        <span class="project-tech">Python • ML • Finance</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODALS -->
+<div id="modal1" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h2>Algo Trading Bot</h2>
+    <p>Our AI-powered trading bot integrates with major exchanges and uses real-time signals to execute trades automatically. Includes dashboard analytics and risk management.</p>
+    <ul>
+      <li>Python & AI</li>
+      <li>Exchange API Integration</li>
+      <li>Real-time Trade Execution</li>
+    </ul>
+  </div>
+</div>
+
+<div id="modal2" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h2>Market Analysis Dashboard</h2>
+    <p>Interactive dashboards showing live stock and crypto data. Built with React.js and D3.js for dynamic visualization.</p>
+    <ul>
+      <li>React.js • D3.js</li>
+      <li>WebSocket live updates</li>
+      <li>Customizable analytics panels</li>
+    </ul>
+  </div>
+</div>
+
+<div id="modal3" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <h2>Trading Strategies Course</h2>
+    <p>Learn algorithmic trading strategies, risk management, and portfolio optimization with hands-on projects and real market data.</p>
+    <ul>
+      <li>Python & Machine Learning</li>
+      <li>Strategy backtesting</li>
+      <li>Portfolio optimization</li>
+    </ul>
+  </div>
+</div>
+
+<style>
+/* PROJECT CARD HOVER */
+.project-card { cursor:pointer; transition: transform 0.3s; }
+.project-card:hover { transform: translateY(-10px) scale(1.03); }
+
+/* MODAL STYLE */
+.modal {
+  display:none;
+  position:fixed;
+  z-index:2000;
+  left:0; top:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.8);
+  backdrop-filter:blur(5px);
+  justify-content:center;
+  align-items:center;
+}
+.modal-content {
+  background:#111; padding:2rem; border-radius:16px;
+  max-width:600px; width:90%; position:relative;
+}
+.modal-close {
+  position:absolute; top:12px; right:16px;
+  font-size:1.5rem; cursor:pointer;
+  color:#fff;
+}
+.modal-content h2 { margin-top:0; }
+.modal-content ul { padding-left:1.2rem; }
+</style>
+
+<script>
+// MODAL FUNCTIONALITY
+const modalTriggers = document.querySelectorAll('.project-card');
+const modals = document.querySelectorAll('.modal');
+const modalCloses = document.querySelectorAll('.modal-close');
+
+modalTriggers.forEach(card => {
+  card.addEventListener('click', () => {
+    const modalId = card.getAttribute('data-modal');
+    document.getElementById(modalId).style.display = 'flex';
+  });
+});
+
+modalCloses.forEach(close => {
+  close.addEventListener('click', () => {
+    close.parentElement.parentElement.style.display = 'none';
+  });
+});
+
+// Close modal on outside click
+window.addEventListener('click', e => {
+  modals.forEach(modal => {
+    if(e.target === modal) modal.style.display = 'none';
+  });
+});
+</script>
+
+<!-- FAQ -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>How long are the courses?</h3>
+        <p>Courses range from 4 to 12 weeks depending on the program.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you offer job assistance?</h3>
+        <p>Yes! Our placement team helps you with resume building & interviews.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / NEWS -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Latest From Our Blog</h2>
+    <div class="blog-carousel">
+      
+      <div class="course-card" >
+
+           
+        <img src="assets/courses/aitrands.jpg" class="course-thumb">
+        <h3>AI Trends 2026</h3>
+        <p>Explore the most important AI trends in 2026, including emerging technologies, ethical AI, and real-world applications.
+           
+          AI, Machine Learning, Future Tech</p>
+      </div>
+
+      <div class="course-card">
+           
+        <img src="assets/courses/crypto.jpg" class="course-thumb">
+        <h3>Crypto Trading Guide</h3>
+       <p>Crypto Trading Guide"
+           A comprehensive guide on cryptocurrency trading, covering strategies, market analysis, and risk management for beginners and experts.
+           Crypto, Trading, Blockchain</p>
+      </div>
+
+      <div class="course-card" >
+           
+        <img src="assets/courses/fullstacktip.jpg" class="course-thumb">
+        <h3>Full Stack Tips</h3>
+        <p>Tips and best practices for full stack development including frontend, backend, database design, and deployment strategies.
+          
+          Full Stack, Web Development, Programming</p>
+      </div>
+
+      <div class="course-card" >
+         
+        <img src="assets/courses/sd.jpg" class="course-thumb">
+        <h3>Software Development</h3>
+         <p>Learn about software development methodologies, project planning, and hands-on coding practices to build real-world applications."
+          Software, Development, Coding</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- NEWSLETTER -->
+<section class="section-alt">
+  <div class="container">
+    <h2 class="section-title">Subscribe for Updates</h2>
+    <p>Get free guides, tips, and early course access</p>
+   <form id="subscribeForm" style="display:flex;justify-content:center;flex-wrap:wrap;gap:0.5rem;">
+  <input type="email" id="subscriberEmail" placeholder="Your email" required>
+  <button class="btn-primary" type="submit">Subscribe</button>
+</form>
+
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer section-alt">
+  <div class="container">
+    <div>
+      <h4>SmartCode</h4>
+      <p>© 2026 SmartCode Tech Hub</p>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <nav class="nav">
+        <a href="courses.html">Courses</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+    <div>
+      <h4>Subscribe</h4>
+      <form>
+        <input type="email" placeholder="Your email">
+        <button class="btn-primary">Subscribe</button>
+      </form>
+    </div>
+ <div class="social-links">
+  <a href="https://facebook.com" target="_blank" class="fb-icon">
+    <img src="assets/courses/fb.jpg" alt="Facebook">
+  </a>
+
+  <a href="https://twitter.com" target="_blank">
+    <img src="assets/courses/tt.jpg" alt="Twitter">
+  </a>
+
+  <a href="https://linkedin.com" target="_blank">
+    <img src="assets/courses/ln.jpg" alt="Linkedin">
+  </a>
+
+  <a href="mailto:info@smartcode.com">
+    <img src="assets/courses/mail.jpg" alt="Mail">
+    <i data-lucide="mail"></i>
+  </a>
+</div>
+
+
+</head>
+
+
+  </div>
+</footer>
+
+
+<script>
+  //*subcriptioon*/
+  
+document.getElementById("subscribeForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById("subscriberEmail").value;
+
+  const subject = encodeURIComponent("SmartCode Subscription Request");
+  const body = encodeURIComponent(
+    `Hello SmartCode Team,\n\nI would like to subscribe for updates.\n\nMy Email: ${email}\n\nThank you!`
+  );
+
+  window.location.href = `mailto:info@smartcode.com?subject=${subject}&body=${body}`;
+});
+
+
+/* COUNTER ANIMATION */
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+  const updateCount = () => {
+    const target = +counter.getAttribute('data-target');
+    const count = +counter.innerText;
+    const speed = 50;
+    const increment = target / speed;
+    if(count < target) {
+      counter.innerText = Math.ceil(count + increment);
+      setTimeout(updateCount, 20);
+    } else { counter.innerText = target; }
+  };
+  updateCount();
+});
+
+/* HERO ANIMATION */
+window.addEventListener('load', () => {
+  document.querySelector('.hero-banner').classList.add('visible');
+  lucide.replace();
+});
+
+/* SECTION REVEAL ON SCROLL */
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) entry.target.classList.add('visible');
+  });
+},{threshold:0.2});
+sections.forEach(section => observer.observe(section));
+
+/* HEADER SCROLL */
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('.header');
+  if(window.scrollY > 80) header.classList.add('scrolled');
+  else header.classList.remove('scrolled');
+});
+
+/* FAQ TOGGLE */
+document.querySelectorAll('.faq-item h3').forEach(item => {
+  item.addEventListener('click', () => item.parentElement.classList.toggle('active'));
+});
+</script>
+<script src="assets/js/main.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- UNIVERSAL DETAILS MODAL -->
+<div id="detailsModal" class="modal">
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+
+    <img id="detailsImg" style="width:100%;border-radius:14px;margin-bottom:1rem;">
+    <h2 id="detailsTitle"></h2>
+    <p id="detailsDesc"></p>
+
+    <p><strong>Tech Stack:</strong></p>
+    <p id="detailsTech"></p>
+
+    <a href="contact.html" class="btn-primary" style="margin-top:1rem;display:inline-block;">
+      Enquire Now
+    </a>
+  </div>
+</div>
+<script>
+/* =============================
+   MOBILE vs DESKTOP DETECTION
+============================= */
+const isMobile = window.matchMedia("(pointer: coarse)").matches;
+
+const detailCards = document.querySelectorAll(
+  '.internship-card, .course-card:not(.project-card)'
+);
+
+const detailsModal = document.getElementById('detailsModal');
+
+function openDetails(card) {
+  document.getElementById('detailsTitle').innerText =
+    card.dataset.title || "Details";
+
+  document.getElementById('detailsImg').src =
+    card.dataset.image || "";
+
+  document.getElementById('detailsDesc').innerText =
+    card.dataset.desc || "More information coming soon.";
+
+  document.getElementById('detailsTech').innerText =
+    card.dataset.tech || "—";
+
+  detailsModal.style.display = 'flex';
+}
+
+/* MOBILE → SINGLE TAP */
+if (isMobile) {
+  detailCards.forEach(card => {
+    card.addEventListener('click', () => openDetails(card));
+  });
+}
+
+/* DESKTOP → DOUBLE CLICK */
+else {
+  detailCards.forEach(card => {
+    card.addEventListener('dblclick', () => openDetails(card));
+  });
+}
+
+/* CLOSE DETAILS MODAL */
+detailsModal.querySelector('.modal-close').onclick = () => {
+  detailsModal.style.display = 'none';
+};
+
+window.addEventListener('click', e => {
+  if (e.target === detailsModal) {
+    detailsModal.style.display = 'none';
+  }
+});
+</script>
+
+
+</body>
+</html>

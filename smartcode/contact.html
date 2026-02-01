@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact • SmartCode Tech Hub</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+:root {
+  --accent1:#6366f1;
+  --accent2:#22d3ee;
+}
+
+/* ================= BUTTONS ================= */
+.nav a,.btn-primary,.btn-outline{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:10px 18px;border-radius:12px;
+  font-weight:600;text-decoration:none;
+  transition:.3s;cursor:pointer
+}
+.btn-primary{background:linear-gradient(135deg,var(--accent1),var(--accent2));color:#fff}
+.btn-outline{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn-primary:hover,.btn-outline:hover{
+  transform:translateY(-3px) scale(1.05);
+  box-shadow:0 0 18px var(--accent2)
+}
+
+/* ================= HEADER ================= */
+.header{padding:1rem 0}
+.header-inner{display:flex;justify-content:space-between;align-items:center}
+.nav{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ================= HERO ================= */
+.hero-banner{
+  margin-top:2rem;
+  padding:4rem 2rem;
+  background:linear-gradient(135deg,var(--accent1),var(--accent2));
+  border-radius:22px;color:#fff
+}
+.hero-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.hero-content h1{font-size:2.6rem;margin-bottom:1rem}
+.hero-content p{line-height:1.7;margin-bottom:1.6rem}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-image img{max-width:420px;width:100%;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* ================= STATS ================= */
+.stats{
+  margin:3rem 0;display:flex;justify-content:center;
+  gap:3rem;flex-wrap:wrap;text-align:center
+}
+.stats h2{font-size:2.3rem;color:var(--accent2)}
+
+/* ================= CONTACT FORM ================= */
+.contact-form{
+  background:rgba(255,255,255,.08);
+  padding:2rem;border-radius:18px;
+  backdrop-filter:blur(12px)
+}
+.contact-form input,.contact-form textarea{
+  width:100%;padding:10px 14px;margin-bottom:14px;
+  border-radius:12px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.25);color:#fff
+}
+.form-status{margin-top:10px;color:var(--accent2);font-weight:600}
+
+/* ================= SOCIAL LINKS ================= */
+.social-links{
+  margin:3rem 0;display:flex;justify-content:center;gap:22px
+}
+.social-links a{
+  width:52px;height:52px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  transition:.3s
+}
+.social-links img{width:26px}
+.social-links a:hover{
+  transform:scale(1.2);
+  background:var(--accent2);
+  box-shadow:0 0 25px var(--accent2)
+}
+
+/* ================= WHATSAPP BUTTON ================= */
+#whatsappBtn{
+  position:fixed;bottom:24px;right:24px;
+  width:60px;height:60px;border-radius:50%;
+  background:#25d366;
+  display:flex;align-items:center;justify-content:center;
+  z-index:9999;
+  animation:pulse 2s infinite
+}
+#whatsappBtn svg{width:28px;height:28px;color:#fff}
+@keyframes pulse{
+  50%{box-shadow:0 0 40px rgba(37,211,102,1)}
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;text-align:center}
+  .hero-actions{justify-content:center}
+}
+</style>
+</head>
+
+<body class="theme-dark">
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner">
+    <a href="index.html" style="display:flex;gap:10px;align-items:center">
+      <img src="assets/img/Logo.svg.png" style="height:45px">
+      <strong>SmartCode Tech Hub</strong>
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="btn-outline">Home</a>
+      <a href="courses.html" class="btn-outline">Courses</a>
+      <a href="projects.html" class="btn-outline">Projects</a>
+      <a href="internships.html" class="btn-outline">Internships</a>
+      <a href="contact.html" class="btn-primary">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<!-- ================= HERO ================= -->
+<section class="hero-banner">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1>Contact SmartCode Tech Hub</h1>
+      <p>
+        📧 smartcodetechhub@gmail.com<br>
+        📞 +91 85230 52109<br>
+        📍 Hyderabad, Telangana, India
+      </p>
+
+      <div class="hero-actions">
+        <a href="courses.html" class="btn-primary">Explore Courses</a>
+        <a href="https://wa.me/918523052109?text=Hello%20SmartCode%20Tech%20Hub%20👋%0AI%20am%20interested%20in%20your%20courses%20and%20internships.%20Please%20guide%20me."
+           target="_blank" class="btn-outline">
+          Message on WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/img/contact.jpg">
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats">
+  <div><h2 class="counter" data-target="600">0</h2><p>Students Enrolled</p></div>
+  <div><h2 class="counter" data-target="50">0</h2><p>Courses</p></div>
+  <div><h2 class="counter" data-target="100">0</h2><p>Projects</p></div>
+</section>
+
+<!-- ================= CONTACT FORM ================= -->
+<form id="contactForm" class="contact-form">
+  <input type="text" name="name" placeholder="Full Name" required>
+  <input type="email" name="email" placeholder="Email" required>
+  <textarea name="message" placeholder="Your Message" required></textarea>
+  <button class="btn-primary">Send Message</button>
+  <p id="contactStatus" class="form-status"></p>
+</form>
+
+<!-- ================= SOCIAL ================= -->
+<!-- SOCIAL LINKS -->
+<div class="social-links">
+  <a href="https://facebook.com/yourpage" target="_blank">
+    <img src="assets/courses/fb.jpg" alt="Facebook">
+  </a>
+
+  <a href="https://twitter.com/yourpage" target="_blank">
+    <img src="assets/courses/tt.jpg" alt="Twitter">
+  </a>
+
+  <a href="https://linkedin.com/company/yourpage" target="_blank">
+    <img src="assets/courses/ln.jpg" alt="LinkedIn">
+  </a>
+
+    <a href="mailto:info@smartcode.com">
+    <img src="assets/courses/mail.jpg" alt="Mail">
+  </a>
+</div>
+
+
+</main>
+
+<footer class="footer">
+  <p>© 2026 SmartCode Tech Hub</p>
+</footer>
+
+<!-- ================= WHATSAPP AUTO MESSAGE BUTTON ================= -->
+<a href="https://wa.me/918523052109?text=Hello%20SmartCode%20Tech%20Hub%20👋%0AI%20am%20interested%20in%20your%20courses%20and%20internships.%20Please%20guide%20me."
+   target="_blank" id="whatsappBtn" aria-label="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path d="M21 15a4 4 0 0 1-4 4H7l-4 4V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>
+  </svg>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+/* COUNTERS */
+document.querySelectorAll('.counter').forEach(c=>{
+  const t=+c.dataset.target;
+  const i=setInterval(()=>{
+    c.innerText=+c.innerText+5;
+    if(+c.innerText>=t){c.innerText=t;clearInterval(i);}
+  },20);
+});
+
+/* EMAILJS */
+emailjs.init("BTJ_g1XgbA7I7X-zt");
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  document.getElementById("contactStatus").innerText="Sending...";
+  emailjs.sendForm("service_pv3y8qo","template_55xf1hl",this)
+    .then(()=>{this.reset();document.getElementById("contactStatus").innerText="Message Sent Successfully!";})
+    .catch(()=>{document.getElementById("contactStatus").innerText="Failed to send message";});
+});
+</script>
+
+</body>
+</html>

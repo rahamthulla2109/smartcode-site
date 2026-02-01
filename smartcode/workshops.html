@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshops • SmartCode Tech Hub</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+
+<style>
+/* ===== BUTTONS & NAV (SAME AS INDEX) ===== */
+.nav a,
+.btn-primary,
+.btn-outline {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: #fff;
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav a:hover,
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35),
+              0 0 12px #22d3ee;
+}
+
+/* ===== HERO ===== */
+.hero-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  border-radius: 20px;
+  margin: 2rem;
+  color: #fff;
+}
+
+/* ===== CARDS ===== */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35),
+              0 0 15px #6366f1;
+}
+</style>
+</head>
+
+<body class="theme-dark">
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;">
+
+    <a href="index.html" class="brand" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/img/Logo.svg.png" alt="SmartCode" style="height:45px;">
+      <strong style="font-size:1.2rem;">SmartCode Tech Hub</strong>
+    </a>
+
+    <nav class="nav" style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="index.html" class="btn-outline"><i data-lucide="home"></i>Home</a>
+      <a href="courses.html" class="btn-outline"><i data-lucide="book-open"></i>Courses</a>
+      <a href="projects.html" class="btn-outline"><i data-lucide="code"></i>Projects</a>
+      <a href="internships.html" class="btn-outline"><i data-lucide="briefcase"></i>Internships</a>
+      <a href="workshops.html" class="btn-primary"><i data-lucide="calendar"></i>Workshops</a>
+      <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <h1>Live Tech Workshops 🚀</h1>
+    <p>
+      Short, intensive workshops designed to upgrade your skills  
+      with hands-on learning & expert guidance.
+    </p>
+
+    <a href="contact.html" class="btn-primary">
+      <i data-lucide="send"></i> Register Now
+    </a>
+    <a href="courses.html" class="btn-outline">
+      <i data-lucide="layers"></i> View Courses
+    </a>
+  </div>
+
+  <img src="assets/img/baner.svg.png" alt="Workshops" style="max-width:420px;">
+</section>
+
+<!-- ================= WORKSHOPS ================= -->
+<section class="section">
+  <div class="container">
+
+    <h2 class="section-title">Upcoming Workshops</h2>
+    <p class="section-subtitle">Boost your skills in just a few hours</p>
+
+    <div class="courses-grid">
+
+      <div class="card">
+        <img src="assets/courses/github.jpg" class="course-thumb">
+        <h3>Git & GitHub Mastery</h3>
+        <p>Version control, branching & real collaboration workflows.</p>
+        <span class="project-tech">📅 15 Feb • ⏱ 4 hrs • 🌐 Online</span>
+      </div>
+
+      <div class="card">
+        <img src="assets/courses/docker.jpg" class="course-thumb">
+        <h3>Docker & Kubernetes</h3>
+        <p>Containerize apps and deploy on Kubernetes clusters.</p>
+        <span class="project-tech">📅 22 Feb • ⏱ 6 hrs • 🌐 Online</span>
+      </div>
+
+      <div class="card">
+        <img src="assets/courses/system.jpg" class="course-thumb">
+        <h3>System Design Interviews</h3>
+        <p>Crack FAANG interviews with scalable system design.</p>
+        <span class="project-tech">📅 1 Mar • ⏱ 6 hrs • 📍 Offline</span>
+      </div>
+
+      <div class="card">
+        <img src="assets/courses/camp.jpg" class="course-thumb">
+        <h3>Cybersecurity Bootcamp</h3>
+        <p>Ethical hacking, OWASP Top 10 & scanning tools.</p>
+        <span class="project-tech">📅 10 Mar • ⏱ 5 hrs • 🌐 Online</span>
+      </div>
+
+      <div class="card">
+        <img src="assets/courses/ai prompt.jpg" class="course-thumb">
+        <h3>AI Prompt Engineering</h3>
+        <p>Build AI workflows using ChatGPT & automation.</p>
+        <span class="project-tech">📅 18 Mar • ⏱ 3 hrs • 🌐 Online</span>
+      </div>
+
+      <div class="card">
+        <img src="assets/courses/fuiux.jpg" class="course-thumb">
+        <h3>Figma UI/UX Crash Course</h3>
+        <p>Design modern interfaces & interactive prototypes.</p>
+        <span class="project-tech">📅 25 Mar • ⏱ 4 hrs • 🌐 Online</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section section-alt">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">Limited Seats Available</h2>
+    <p class="section-subtitle">Reserve your spot before registrations close</p>
+    <a href="contact.html" class="btn-primary">
+      <i data-lucide="rocket"></i> Book Your Seat
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2025 SmartCode Tech Hub — All Rights Reserved</p>
+</footer>
+
+<script>
+  lucide.replace();
+</script>
+
+</body>
+</html>

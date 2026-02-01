@@ -1,0 +1,333 @@
+/* =====================================================
+   THEME VARIABLES (5 THEMES)
+===================================================== */
+
+/* DARK */
+body.theme-dark {
+  --bg-main: #0f172a;
+  --text-main: #e2e8f0;
+  --card-base: #1e293b;
+  --accent1: #6366f1;
+  --accent2: #22d3ee;
+}
+
+/* LIGHT */
+body.theme-light {
+  --bg-main: #f8fafc;
+  --text-main: #0f172a;
+  --card-base: #ffffff;
+  --accent1: #6366f1;
+  --accent2: #38bdf8;
+}
+
+/* PURPLE */
+body.theme-purple {
+  --bg-main: #1e1b4b;
+  --text-main: #ede9fe;
+  --card-base: #312e81;
+  --accent1: #a78bfa;
+  --accent2: #6366f1;
+}
+
+/* NEON */
+body.theme-neon {
+  --bg-main: #020617;
+  --text-main: #e0f2fe;
+  --card-base: #020617;
+  --accent1: #22d3ee;
+  --accent2: #0ea5e9;
+}
+
+/* GRADIENT */
+body.theme-gradient {
+  --bg-main: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  --text-main: #e5e7eb;
+  --card-base: rgba(255,255,255,0.12);
+  --accent1: #38bdf8;
+  --accent2: #22d3ee;
+}
+.subscribe-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+}
+
+.popup-box {
+  background: #111;
+  padding: 2rem 2.5rem;
+  border-radius: 18px;
+  text-align: center;
+  animation: popIn 0.4s ease;
+  box-shadow: 0 0 35px #22d3ee88;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+
+/* =====================================================
+   GLOBAL RESET + BASE
+===================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background-attachment: fixed;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Smooth animations */
+* {
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.courses-grid,
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.section-subtitle {
+  color: #94a3b8;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+.hero-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 8%;
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+}
+
+.hero-content p {
+  margin: 1rem 0 1.5rem;
+  opacity: 0.85;
+}
+
+/* =====================================================
+   BUTTONS (GLASS)
+===================================================== */
+.btn-primary,
+.btn-outline {
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(10px);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--accent1);
+}
+
+/* =====================================================
+   GLASSMORPHISM CARDS (PREMIUM)
+===================================================== */
+.course-card,
+.project-card,
+.card {
+  background: color-mix(in srgb, var(--card-base) 70%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.35),
+    0 4px 12px rgba(0,0,0,0.25);
+
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Glow layer */
+.course-card::before,
+.project-card::before,
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, var(--accent1), var(--accent2));
+  opacity: 0.12;
+  filter: blur(35px);
+  z-index: 0;
+}
+
+.course-card *,
+.project-card *,
+.card * {
+  position: relative;
+  z-index: 1;
+}
+.social-links a {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  transition: 0.3s;
+  color:#fff;
+  font-size: 18px;
+}
+
+.social-links a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 18px #22d3ee;
+}
+
+
+/* Hover effect */
+.course-card:hover,
+.project-card:hover,
+.card:hover {
+  transform: perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-12px);
+  box-shadow:
+    0 30px 70px rgba(0,0,0,0.55),
+    0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* =====================================================
+   IMAGES
+===================================================== */
+.course-thumb {
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.35s ease;
+}
+/* =====================================================
+   INTERNSHIP IMAGES – SAME SIZE FOR ALL 3
+===================================================== */
+.internship-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+/* DEVOPS SIDE-BY-SIDE LAYOUT */
+.devops-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.devops-layout img {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+}
+
+
+.course-card:hover .course-thumb {
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  opacity: 0.7;
+}
+
+/* =====================================================
+   THEME SWITCHER
+===================================================== */
+.theme-switcher {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.theme-switcher select {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: var(--card-base);
+  color: var(--text-main);
+}
+
+/* =====================================================
+   FALLBACK (OLD BROWSERS)
+===================================================== */
+@supports not (backdrop-filter: blur(10px)) {
+  .course-card,
+  .project-card,
+  .card {
+    background: var(--card-base);
+  }
+}
+/* MOBILE RESPONSIVE FIX */
+@media (max-width: 768px) {
+  .devops-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .devops-layout img {
+    width: 100%;
+    height: 180px;
+  }
+}
+

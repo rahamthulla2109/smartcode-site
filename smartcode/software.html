@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software & Websites • SmartCode Tech Hub</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+
+<style>
+/* ===== BUTTONS & HOVER (SAME AS INDEX) ===== */
+.nav a,
+.btn-primary,
+.btn-outline {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
+  color: #fff;
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav a:hover,
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35),
+              0 0 12px #22d3ee;
+}
+
+/* ===== HERO ===== */
+.hero-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 5%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  border-radius: 20px;
+  margin: 2rem;
+  color: #fff;
+}
+
+/* ===== CARDS ===== */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35),
+              0 0 15px #6366f1;
+}
+</style>
+</head>
+
+<body class="theme-dark">
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+  <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;">
+
+    <a href="index.html" class="brand" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/img/Logo.svg.png" alt="SmartCode" style="height:45px;">
+      <strong style="font-size:1.2rem;">SmartCode Tech Hub</strong>
+    </a>
+
+    <nav class="nav" style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="index.html" class="btn-outline"><i data-lucide="home"></i>Home</a>
+      <a href="courses.html" class="btn-outline"><i data-lucide="book-open"></i>Courses</a>
+      <a href="projects.html" class="btn-outline"><i data-lucide="code"></i>Projects</a>
+      <a href="software.html" class="btn-primary"><i data-lucide="monitor"></i>Software</a>
+      <a href="internships.html" class="btn-outline"><i data-lucide="briefcase"></i>Internships</a>
+      <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <h1>Software & Website Solutions 💻</h1>
+    <p>
+      Custom software, websites & mobile apps designed for startups,
+      businesses & enterprises.
+    </p>
+
+    <a href="contact.html" class="btn-primary">
+      <i data-lucide="send"></i> Request a Quote
+    </a>
+    <a href="projects.html" class="btn-outline">
+      <i data-lucide="layers"></i> View Work
+    </a>
+  </div>
+
+  <img src="assets/img/baner.svg.png" alt="Software Development" style="max-width:420px;">
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section">
+  <div class="container">
+
+    <h2 class="section-title">Our Software Services</h2>
+    <p class="section-subtitle">High-quality solutions built with modern technologies</p>
+
+    <div class="courses-grid">
+
+      <div class="card">
+        <h3>🛒 E-Commerce Websites</h3>
+        <p>Secure online stores with payment gateways & admin dashboards.</p>
+        <span class="project-tech">⏱ Duration: 6 Weeks</span>
+      </div>
+
+      <div class="card">
+        <h3>📱 Mobile App Development</h3>
+        <p>Android & iOS apps using Flutter or React Native.</p>
+        <span class="project-tech">⏱ Duration: 5 Weeks</span>
+      </div>
+
+      <div class="card">
+        <h3>🧩 Custom Software</h3>
+        <p>Tailored desktop & web applications for your business.</p>
+        <span class="project-tech">⏱ Duration: 8 Weeks</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="section section-alt">
+  <div class="container" style="text-align:center;">
+    <h2 class="section-title">Have an Idea?</h2>
+    <p class="section-subtitle">Let’s turn your idea into a powerful digital product</p>
+    <a href="contact.html" class="btn-primary">
+      <i data-lucide="rocket"></i> Start Your Project
+    </a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2026 SmartCode Tech Hub — info@smartcodetech.com</p>
+</footer>
+
+<script>
+  lucide.replace();
+</script>
+
+</body>
+</html>

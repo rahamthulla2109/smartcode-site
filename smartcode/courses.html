@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>All Courses • SmartCode Tech Hub</title>
+<link rel="stylesheet" href="assets/css/style.css" />
+
+<style>
+/* ================= NAV BUTTONS & HOVER ================= */
+.nav a,
+button,
+.btn-primary,
+.btn-outline {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #fff;
+  border: none;
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav a:hover,
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35),
+              0 0 15px var(--accent2);
+}
+
+/* ================= COURSE CARDS ================= */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  background: color-mix(in srgb, var(--card-base) 70%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.course-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 0 20px var(--accent2);
+}
+
+.course-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ================= CATEGORY TITLES ================= */
+.category-title {
+  font-size: 1.8rem;
+  margin: 2rem 0 1rem;
+  color: var(--accent1);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.35);
+}
+
+/* ================= PAGE BANNER ================= */
+.page-banner {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-banner img.baner {
+  max-width: 80%;
+  margin-top: 1rem;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  transition: transform 0.3s ease;
+}
+
+.page-banner img.baner:hover {
+  transform: scale(1.02);
+}
+</style>
+</head>
+
+<body class="theme-dark">
+
+<header class="header">
+  <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;">
+
+    <a href="index.html" class="brand" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/img/Logo.svg.png" alt="SmartCode" style="height:45px;">
+      <strong style="font-size:1.2rem;">SmartCode Tech Hub</strong>
+    </a>
+
+    <nav class="nav" id="navMenu" style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="index.html" class="btn-outline"><i data-lucide="home"></i>Home</a>
+      <a href="courses.html" class="btn-primary"><i data-lucide="book-open"></i>Courses</a>
+      <a href="projects.html" class="btn-outline"><i data-lucide="code"></i>Projects</a>
+      <a href="internships.html" class="btn-outline"><i data-lucide="briefcase"></i>Internships</a>
+      <a href="workshops.html" class="btn-outline"><i data-lucide="tool"></i>Workshops</a>
+      <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Contact</a>
+      <a href="admin.html" class="btn-outline"><i data-lucide="shield"></i>Admin</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero-banner">
+  <div class="hero-content">
+    <h1>Explore 50+ Software Courses</h1>
+    <p>Master programming, AI, cloud, cybersecurity, mobile apps, UI/UX, and more.</p>
+    <a href="courses.html" class="btn-primary"><i data-lucide="book-open"></i>Explore Courses</a>
+    <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Get Guidance</a>
+  </div>
+  <img src="assets/img/Copilot_20260128_000746.png" alt="Tech Learning" style="max-width:420px;">
+</section>
+
+
+<section class="section section-alt">
+  <div class="container">
+
+    <!-- ================= COURSES ================= -->
+    <!-- Repeat each category as before -->
+    <!-- Example for Programming Languages -->
+    <h2 class="section-title">Programming Languages</h2>
+    <div class="courses-grid">
+      <div class="course-card"><img src="assets/courses/python_jpg.webp" class="course-thumb"><h3>Python Full Stack</h3><p> Learn Python, Django, Flask & build real-world apps,Python, Django, Flask, SQL"</p></div>
+      <div class="course-card" ><img src="assets/courses/reactjs .jpg" class="course-thumb"><h3>React.js</h3><p>Learn React.js, Redux & create dynamic web applications."React.js, Redux, JavaScript, HTML, CSS</p></div>
+      <div class="course-card"> <img src="assets/courses/cloud.jpg" class="course-thumb"><h3>Cloud Computing</h3><p>Master AWS, Azure, GCP and cloud deployment pipelines."AWS, Azure, GCP, DevOps</p></div>
+      <div class="course-card"> <img src="assets/courses/cyber.jpg" class="course-thumb"><h3>CyberSecurity</h3><p>Learn to secure systems, networks & applications against attacks.Ethical Hacking, Network Security, Penetration Testing</p></div>
+      <div class="course-card" ><img src="assets/courses/java.jpg" class="course-thumb"><h3>Java</h3><p>Learn Java, Spring Boot, Hibernate, and build real-world projects.Java, Spring Boot, Hibernate, SQL</p></div>
+      <div class="course-card"><img src="assets/courses/ai prompt.jpg" class="course-thumb"><h3>AI</h3> <p>Learn AI, machine learning algorithms & build smart applications. Python, TensorFlow, Machine Learning, AI</p></div>
+      <div class="course-card"> <img src="assets/courses/ds.jpg" class="course-thumb"><h3>Data Science</h3><p>Learn data analytics, visualization, and predictive modeling.Python, Pandas, NumPy, Matplotlib, Machine Learning"</p></div>
+      <div class="course-card"><img src="assets/courses/csharp.jpg" class="course-thumb"><h3>C#</h3><p>C# Development,Learn C# and .NET framework to build desktop and web apps,C#, .NET, SQL, Windows Forms</p></div>
+    <div class="course-card">
+        <img src="assets/courses/c.jpg" class="course-thumb">
+        <h3>C Programming</h3>
+        <p>Learn core programming concepts, memory management, pointers & build strong logical foundations using C language.</p>
+      </div>
+      <div class="course-card">
+        <img src="assets/courses/c++.jpg" class="course-thumb">
+        <h3>C++ Programming</h3>
+        <p>Master object-oriented programming, data structures, algorithms & build high-performance applications using C++.</p>
+      </div>
+      <div class="course-card">
+        <img src="assets/courses/testing.jpg" class="course-thumb">
+        <h3>Software Testing</h3>
+        <p>Learn manual & automation testing, test cases, bug tracking, Selenium basics & real-time QA projects.</p>
+      </div>
+      <div class="course-card">
+        <img src="assets/courses/mobile.jpg" class="course-thumb">
+        <h3>App Development</h3>
+        <p>Build Android & cross-platform mobile apps using Flutter / Android Studio with real-world app projects.</p>
+      </div>
+      <div class="course-card">
+        <img src="assets/courses/EC.jpg" class="course-thumb">
+        <h3>Website Development</h3>
+        <p>Learn HTML, CSS, JavaScript, responsive design & build modern, professional websites from scratch.</p>
+      </div>
+      <div class="course-card">
+        <img src="assets/courses/algo.jpg" class="course-thumb">
+        <h3>Trading Bots & Algo Trading</h3>
+        <p>Design automated trading bots using Python, APIs & technical strategies for stock & forex markets.</p>
+      </div>
+      <div class="course-card">
+        <img src="assets/courses/crypto.jpg" class="course-thumb">
+        <h3>Crypto Trading & Bots</h3>
+        <p>Learn crypto markets, technical analysis & build automated crypto trading bots using real exchange APIs.</p>
+      </div>
+
+    </div>
+
+    <!-- Add remaining categories the same way... -->
+    <!-- Web Development, Mobile, Data & AI, Cloud & DevOps, Cybersecurity, etc. -->
+
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p>© 2025 SmartCode Tech Hub — All Rights Reserved</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+<script>
+  lucide.replace(); // Initialize icons
+</script>
+</body>
+</html>

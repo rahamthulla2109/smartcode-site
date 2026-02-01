@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Admin Dashboard • SmartCode Tech Hub</title>
+<link rel="stylesheet" href="assets/css/style.css" />
+
+<style>
+/* ================= NAV BUTTONS & HOVER ================= */
+.nav a,
+button,
+.btn-primary,
+.btn-outline {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent1), var(--accent2));
+  color: #fff;
+  border: none;
+}
+
+.btn-outline {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.nav a:hover,
+.btn-primary:hover,
+.btn-outline:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35),
+              0 0 15px var(--accent2);
+}
+
+/* ================= GLASS CARDS ================= */
+.card {
+  background: color-mix(in srgb, var(--card-base) 70%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.35),
+    0 4px 12px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.45),
+    0 0 20px var(--accent2);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(120deg, var(--accent1), var(--accent2));
+  opacity: 0.12;
+  filter: blur(35px);
+  z-index: 0;
+}
+
+.card * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= GRID LAYOUT ================= */
+.grid-2,
+.grid-3 {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+/* ================= ADMIN TABLE ================= */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.admin-table th {
+  background: rgba(255,255,255,0.05);
+  text-align: left;
+}
+
+.admin-table tr:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* ================= STATS ================= */
+.admin-stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.3rem 0;
+}
+
+.course-meta {
+  opacity: 0.7;
+}
+</style>
+</head>
+
+<body class="theme-dark">
+
+<header class="header">
+  <div class="container header-inner" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;">
+
+    <a href="index.html" class="brand" style="display:flex;align-items:center;gap:12px;">
+      <img src="assets/img/logo.svg" alt="SmartCode" style="height:45px;">
+      <strong style="font-size:1.2rem;">SmartCode Tech Hub</strong>
+    </a>
+
+    <nav class="nav" id="navMenu" style="display:flex;gap:14px;flex-wrap:wrap;">
+      <a href="index.html" class="btn-outline"><i data-lucide="home"></i>Home</a>
+      <a href="courses.html" class="btn-outline"><i data-lucide="book-open"></i>Courses</a>
+      <a href="projects.html" class="btn-outline"><i data-lucide="code"></i>Projects</a>
+      <a href="internships.html" class="btn-outline"><i data-lucide="briefcase"></i>Internships</a>
+      <a href="workshops.html" class="btn-outline"><i data-lucide="tool"></i>Workshops</a>
+      <a href="contact.html" class="btn-outline"><i data-lucide="mail"></i>Contact</a>
+      <a href="admin.html" class="btn-primary"><i data-lucide="shield"></i>Admin</a>
+    </nav>
+
+  </div>
+</header>
+
+<main>
+<section class="section">
+  <div class="container">
+    <h1>Admin Dashboard</h1>
+    <p>Manage courses, students, inquiries, and analytics efficiently.</p>
+
+    <!-- ADMIN STATS -->
+    <div class="grid grid-3 admin-stats">
+      <div class="card">
+        <h3>Total Students <i data-lucide="users"></i></h3>
+        <p class="admin-stat-number">2,534</p>
+        <p class="course-meta">+124 this month</p>
+      </div>
+      <div class="card">
+        <h3>Active Courses <i data-lucide="book-open"></i></h3>
+        <p class="admin-stat-number">52</p>
+        <p class="course-meta">Across 8 categories</p>
+      </div>
+      <div class="card">
+        <h3>Pending Inquiries <i data-lucide="mail"></i></h3>
+        <p class="admin-stat-number">18</p>
+        <p class="course-meta">Last 7 days</p>
+      </div>
+    </div>
+
+    <!-- TABLES -->
+    <div class="grid grid-2 admin-tables">
+
+      <div class="card">
+        <h3>Recent Signups <i data-lucide="user-plus"></i></h3>
+        <table class="admin-table">
+          <thead>
+            <tr><th>Name</th><th>Course</th><th>Date</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Ayesha</td><td>Full Stack</td><td>20 Jan</td></tr>
+            <tr><td>Rahul</td><td>Data Science</td><td>19 Jan</td></tr>
+            <tr><td>Meera</td><td>Cloud DevOps</td><td>18 Jan</td></tr>
+            <tr><td>Imran</td><td>Cybersecurity</td><td>17 Jan</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Latest Contact Messages <i data-lucide="message-square"></i></h3>
+        <table class="admin-table">
+          <thead>
+            <tr><th>Name</th><th>Interest</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Sara</td><td>UI/UX</td><td>Replied</td></tr>
+            <tr><td>Vikram</td><td>Full Stack</td><td>In Review</td></tr>
+            <tr><td>Riya</td><td>Machine Learning</td><td>New</td></tr>
+            <tr><td>John</td><td>Cloud</td><td>Replied</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p>© 2025 SmartCode Tech Hub — All Rights Reserved</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.264.0/dist/lucide.min.js"></script>
+<script>
+  lucide.replace(); // Initialize icons
+</script>
+</body>
+</html>
